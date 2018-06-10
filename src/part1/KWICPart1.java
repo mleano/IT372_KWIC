@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class KWICPart1 {
     public static void main(String[] args) {
-        ArrayList<String> arrayListOfLines = getLinesFromFile("files/warAndPeace.txt");
+        ArrayList<String> arrayListOfLines = getLinesFromFile("files/americanpielyrics.txt");
         ArrayList<String[]> arrayListOfSplitLines = splitLinesToArrayOfWords(arrayListOfLines);
         ArrayList<String> arrayListOfCircularShiftedLines = circularShiftTheLines(arrayListOfSplitLines);
         ArrayList<String> arrayListOfAlphabetizedCircularShiftedLines =
@@ -23,6 +23,7 @@ public class KWICPart1 {
         try (Scanner reader = new Scanner(new FileInputStream(filePath))) {
             while (reader.hasNextLine()) {
                 String line = reader.nextLine();
+                line = line.toLowerCase();
                 textFileLinesList.add(line);
             }
         } catch (FileNotFoundException ex) {
