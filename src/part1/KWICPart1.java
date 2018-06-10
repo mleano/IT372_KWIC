@@ -3,6 +3,7 @@ package part1;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class KWICPart1 {
@@ -10,7 +11,9 @@ public class KWICPart1 {
         ArrayList<String> arrayListOfLines = getLinesFromFile("files/warAndPeace.txt");
         ArrayList<String[]> arrayListOfSplitLines = splitLinesToArrayOfWords(arrayListOfLines);
         ArrayList<String> arrayListOfCircularShiftedLines = circularShiftTheLines(arrayListOfSplitLines);
-
+        ArrayList<String> arrayListOfAlphabetizedCircularShiftedLines =
+                alphabetizedTheCircularShiftedLines(arrayListOfCircularShiftedLines);
+        printArrayListToConsole(arrayListOfAlphabetizedCircularShiftedLines);
     }
 
     //This function saves each line from the text file into an array list
@@ -48,8 +51,6 @@ public class KWICPart1 {
         for (String[] splitLine: arrayListOfSplitLines) {
             String[] circularShiftedLine = splitLine;
 
-            System.out.println("before shifting :" + String.join(" ", circularShiftedLine)); //todo delete
-
             String placeHolder = circularShiftedLine[0];
             String lastWord = circularShiftedLine[circularShiftedLine.length - 1];
 
@@ -57,14 +58,25 @@ public class KWICPart1 {
             circularShiftedLine[circularShiftedLine.length - 1] = placeHolder;
 
             String joinedLine = String.join(" ", circularShiftedLine);
-
-            System.out.println("shifted line: " + joinedLine + "\n"); //todo delete
             arrayListOfCircularShiftedLines.add(joinedLine);
         }
 
         return arrayListOfCircularShiftedLines;
     }
 
-    //Alphabetize the
+    //Alphabetize the lines
+    private static ArrayList<String> alphabetizedTheCircularShiftedLines(ArrayList<String> circularShiftedLines) {
+        ArrayList<String> arrayListOfAlphabetizedCircularShiftedLines = circularShiftedLines;
 
+        Collections.sort(arrayListOfAlphabetizedCircularShiftedLines);
+
+        return arrayListOfAlphabetizedCircularShiftedLines;
+    }
+
+    //Print alphabetized circular shifted lines to console
+    private static void printArrayListToConsole(ArrayList<String> arrayListOfAlphabetizedCircularShiftedLines) {
+        for (String line: arrayListOfAlphabetizedCircularShiftedLines) {
+            System.out.println(line);
+        }
+    }
 }
