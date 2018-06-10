@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class KWICPart1 {
+public class KWICVersion1 {
     public static void main(String[] args) {
         ArrayList<String> arrayListOfLines = getLinesFromFile("files/americanpielyrics.txt");
         ArrayList<String[]> arrayListOfSplitLines = splitLinesToArrayOfWords(arrayListOfLines);

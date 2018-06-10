@@ -1,9 +1,14 @@
+## A "KWIC" Program
+#### An IT372 assignment
+
+**Part 4: The Write-Up**
+
 1. What criteria did you use to decompose the first design?
    
     * The criteria I used to decompose the first design is to split up each major
     function. All these functions, including main(), are in one class. 
     All functions are static since main() is static. Every function that is not 
-    main() are private.The functions of my class (KWICPART1.java) are as follows:
+    main() are private.The functions of my class (KWICVersion1.java) are as follows:
         * main(String[] args) : void
         * getLinesFromFile(String filePath) : ArrayList<String> 
         * splitLinesToArrayOfWords(ArrayList<String> arrayListOfLines) : ArrayList<String[]> 
