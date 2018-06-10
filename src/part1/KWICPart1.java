@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class KWICPart1 {
     public static void main(String[] args) {
         ArrayList<String> arrayListOfLines = getLinesFromFile("files/warAndPeace.txt");
-        splitLinesToArrayOfWords(arrayListOfLines);
-
+        ArrayList<String[]> arrayListOfSplitLines = splitLinesToArrayOfWords(arrayListOfLines);
+        ArrayList<String[]> arrayListOfCircularShiftedLines = circularShiftTheLines(arrayListOfSplitLines);
 
     }
 
@@ -29,17 +29,36 @@ public class KWICPart1 {
         return textFileLinesList;
     }
 
+    //Split each line in each index into an array of its words
     private static ArrayList<String[]> splitLinesToArrayOfWords(ArrayList<String> arrayListOfLines) {
         ArrayList<String[]> arrayListOfSplitLines = new ArrayList<>();
 
         for (String line: arrayListOfLines) {
             String[] splitLine = line.split(" ");
-//            arrayListOfLines.add(splitLine);
-
-            System.out.println(splitLine[splitLine.length-1].toString());//todo delete
+            arrayListOfSplitLines.add(splitLine);
         }
 
-        return null;
+        return arrayListOfSplitLines;
+    }
+
+    //Circular shift. Move first word in each line to the end of the line.
+    private static ArrayList<String[]> circularShiftTheLines(ArrayList<String[]> arrayListOfSplitLines){
+        ArrayList<String[]> arrayListOfCircularShiftedLines = new ArrayList<>();
+
+        for (String[] splitLine: arrayListOfSplitLines) {
+            String[] circularShiftedLine = splitLine;
+
+            String firstWord = circularShiftedLine[0];
+            String lastWord = circularShiftedLine[circularShiftedLine.length - 1];
+            String placeHolder = lastWord;
+
+            lastWord = firstWord;
+            firstWord = placeHolder;
+
+            arrayListOfCircularShiftedLines.add(circularShiftedLine);
+        }
+
+        return arrayListOfCircularShiftedLines;
     }
 
 
