@@ -9,7 +9,7 @@ public class KWICPart1 {
     public static void main(String[] args) {
         ArrayList<String> arrayListOfLines = getLinesFromFile("files/warAndPeace.txt");
         ArrayList<String[]> arrayListOfSplitLines = splitLinesToArrayOfWords(arrayListOfLines);
-        ArrayList<String[]> arrayListOfCircularShiftedLines = circularShiftTheLines(arrayListOfSplitLines);
+        ArrayList<String> arrayListOfCircularShiftedLines = circularShiftTheLines(arrayListOfSplitLines);
 
     }
 
@@ -42,25 +42,29 @@ public class KWICPart1 {
     }
 
     //Circular shift. Move first word in each line to the end of the line.
-    private static ArrayList<String[]> circularShiftTheLines(ArrayList<String[]> arrayListOfSplitLines){
-        ArrayList<String[]> arrayListOfCircularShiftedLines = new ArrayList<>();
+    private static ArrayList<String> circularShiftTheLines(ArrayList<String[]> arrayListOfSplitLines){
+        ArrayList<String> arrayListOfCircularShiftedLines = new ArrayList<>();
 
         for (String[] splitLine: arrayListOfSplitLines) {
             String[] circularShiftedLine = splitLine;
 
-            String firstWord = circularShiftedLine[0];
+            System.out.println("before shifting :" + String.join(" ", circularShiftedLine)); //todo delete
+
+            String placeHolder = circularShiftedLine[0];
             String lastWord = circularShiftedLine[circularShiftedLine.length - 1];
-            String placeHolder = lastWord;
 
-            lastWord = firstWord;
-            firstWord = placeHolder;
+            circularShiftedLine[0] = lastWord;
+            circularShiftedLine[circularShiftedLine.length - 1] = placeHolder;
 
-            arrayListOfCircularShiftedLines.add(circularShiftedLine);
+            String joinedLine = String.join(" ", circularShiftedLine);
+
+            System.out.println("shifted line: " + joinedLine + "\n"); //todo delete
+            arrayListOfCircularShiftedLines.add(joinedLine);
         }
 
         return arrayListOfCircularShiftedLines;
     }
 
-
+    //Alphabetize the
 
 }
