@@ -8,7 +8,7 @@
     The criteria I used to decompose the first design is to split up each major
     function. All these functions, including main(), are in one class. The functions
     are called sequentially. All functions are static since main() is static. Every 
-    function that are not main() are private.The functions of my class (KWICVersion1.java) are as follows:
+    function that is not main() are private.The functions of my class (KWICVersion1.java) are as follows:
     * main(String[] args) : void
     * getLinesFromFile(String filePath) : ArrayList<String> 
     * splitLinesToArrayOfWords(ArrayList<String> arrayListOfLines) : ArrayList<String[]> 
@@ -24,7 +24,7 @@
     not know how and does not care how a function from another class works.
     All functions that deal with String manipulation have been moved to the
     LineManager class. The function that deals with file reading has been moved into the LineIO class.
-    The driver class, KWICVersion2Driver contains the main() function. Every function that are not
+    The driver class, KWICVersion2Driver contains the main() function. Every function that is not
     main() are public and not static. See the classes broken down below:
     * LineManager.java
         * splitLinesToArrayOfWords(ArrayList<String> arrayListOfLines) : ArrayList<String[]> 
