@@ -8,7 +8,7 @@
     The criteria I used to decompose the first design is to split up each major
     function. All these functions, including main(), are in one class. The functions
     are called sequentially. All functions are static since main() is static. Every 
-    function that is not main() are private.The functions of my class (KWICVersion1.java) are as follows:
+    function that is not main() are private. The functions of my class (KWICVersion1.java) are as follows:
     * main(String[] args) : void
     * getLinesFromFile(String filePath) : ArrayList<String> 
     * splitLinesToArrayOfWords(ArrayList<String> arrayListOfLines) : ArrayList<String[]> 
@@ -40,10 +40,10 @@
 3. Which design is more resilient to change? And why?
 
     The second version is more resilient to change because related functions are placed into separate
-    classes. Updating one class will not affect the rest of the program. For example, if I change my
-    LineIO class to read from a database instead of a file, this does not affect the rest of the program.
-    Or if I changed the LineManager class to use another data structure other than the array list that 
-    it currently uses, it will not affect the rest of the program.
+    classes (thus, information hiding). Updating one class will not affect the rest of the program. 
+    For example, if I change my LineIO class to read from a database instead of a file, this does not 
+    affect the rest of the program. Or if I changed the LineManager class to use another data structure 
+    other than the array list that it currently uses, it will not affect the rest of the program.
     
 
 4. What would have to change in the first design/implementation 
@@ -57,8 +57,8 @@ if the file were changed out for a database?
 if the file were changed out for a database?
 
     With the second design, my changes would be similar from version 1. However, I would only have to touch
-    the LineIO class by creating a new function for reading from a database ()then use this new function in the 
-    KWICVersion2Driver class's main() function). Or, I could just change (and maybe rename) LineIO's current 
+    the LineIO class by creating a new function for reading from a database (then use this new function in the 
+    KWICVersion2Driver class's main() function). Or I could just change (and maybe rename) LineIO's current 
     function for reading a file so I don't have to change anything from main. The LineManager class isn't
     affected at all.
 
@@ -76,7 +76,7 @@ design 1 compare to design 2 when it comes to impact of the change?
     
     Another change that may happen in the future is having the user enter a filename and even a file location.
     In both versions, I would have to take into account where the file is located (in a file on the hard drive or 
-    in a database). I would also have to use Scanner to get keyboard input.
+    in a database). I would also have to use the Scanner class to get keyboard input.
     
     However, in version 1, I will add these functions to the ever growing god class. Each addition could potentially
     affect other functions. With version 2, I would only change the LineIO class to handle the file location 
@@ -98,7 +98,7 @@ design 1 compare to design 2 when it comes to impact of the change?
 
     The principle of information hiding relates to all this because the difference in the implementation of version 1
     and version 2 explains what information hiding is. With version 1, the details of each function are known by all 
-    other functions in the class. In version 2, since functions are split between three classes, changes to a function
-    in one class does not affect the rest of the program. Details of the implementation in one class does not concern
+    other functions in the class. In version 2, since functions are split between three classes, the details of 
+    functions in one class are hidden from the other classes. Details of the implementation in one class does not concern
     the other classes at all. So changing one class will not affect the other classes. Thus, with information
     hiding, the program as a whole is protected from change.
